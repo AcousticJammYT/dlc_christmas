@@ -137,6 +137,7 @@ return {
 		cutscene:text("* It is a door shaped like Self the Skelf.")
 		cutscene:text("* It's almost as if it was made for himself.")
 	end,
+	---@param cutscene WorldCutscene
 	enter = function(cutscene, event)
 		local function scan_cutscene(char_id)
 			
@@ -171,19 +172,30 @@ return {
 			cutscene:wait(cutscene:walkToSpeed(cutscene:getCharacter("self"), "self_walk_2", 4))
 			local scanned = 0
 			local to_scan = {}
-			for k,v in ipairs(Game.party) do
-				table.insert(to_scan, v.id)
+			for k,p in ipairs(Game.party) do
+				table.insert(to_scan, p)
 			end
 			
 			cutscene:showNametag("self", {font = "sans"})
-			local available = {"jamm", "dess", "YOU", "susie", "brenda", "mario", "noel", "ceroba", "berdly", "pauling", "osw"}
+			local available = {"jamm", "dess", "YOU", "susie", "brenda", "mario", "noel", "ceroba", "berdly", "pauling", "osw", "len"}
+
+			---@class Event
+			---@
+			local display = cutscene:getEvent("workshop_display")
+			display.powered = true
+			display:updateDisplay()
 			
 			-- Scanning
-			for k,v in ipairs(to_scan) do
+			for k,p in ipairs(to_scan) do
+				display.sprite = nil
+				display.checkmark = nil
 				cutscene:look(cutscene:getCharacter("self"), "up")
+				local v = p.id
 				if TableUtils.contains(available, v) then
+					display.party = p
 					scanned = scanned + 1
 					if v == "jamm" then
+						display.checkmark = "checkmark"
 						if Game:getFlag("marcy_joined") then
 							cutscene:text("[font:sans]* jamm and marcy,[wait:5] you're both on the nice list.", "neutral", "self")
 							cutscene:text("[font:sans]* and also,[wait:5] i heard.[wait:10] ania will be missed.", "neutral", "self")
@@ -198,53 +210,75 @@ return {
 							
 						end
 					elseif v == "dess" then
+						display.checkmark = "nomark"
 						cutscene:text("[font:sans]* dess,[wait:5] it tells me that you have been naughty...", "neutral", "self")
 						cutscene:text("[font:sans]* and that you've never been on the nice list,[wait:5] i see.", "neutral", "self")
 					elseif v == "YOU" then
+						display.checkmark = "nomark"
 						cutscene:text("[font:sans]* you the frog,[wait:5] it says you've been naughty...", "neutral", "self")
 						cutscene:text("[font:sans]* ...and that you still owe some rent money?", "neutral", "self")
 					elseif v == "susie" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* susie,[wait:5] i think this may come as a surprise...", "neutral", "self")
 						cutscene:look(cutscene:getCharacter("self"), "left")
 						cutscene:text("[font:sans]* but your niceness seems to be on the rise.", "neutral", "self")
 					elseif v == "brenda" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* brenda, it seems you've been very nice this year.", "neutral", "self")
 						cutscene:look(cutscene:getCharacter("self"), "left")
 						cutscene:text("[font:sans]* i bet that must be really good to hear.", "neutral", "self")
 					elseif v == "mario" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* mario,[wait:5] surprisingly,[wait:5] you're on the nice list this time...", "neutral", "self")
 						cutscene:text("[font:sans]* even criminals need a break,[wait:5] i guess,[wait:5] sometimes.", "neutral", "self")
 					elseif v == "noel" then
-						cutscene:text("[font:sans]* next up,[wait:5] noel,[wait:5] this machine can't place you anywhere...", "neutral", "self")
+						display.checkmark = "huhmark"
+						cutscene:text("[font:sans]* next up,[wait:5]" .. v .. ",[wait:5] this machine can't place you anywhere...", "neutral", "self")
 						cutscene:look(cutscene:getCharacter("self"), "left")
 						cutscene:text("[font:sans]* are you sure that you're even on a list here?", "neutral", "self")
 					elseif v == "ceroba" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* ceroba,[wait:5] on the nice list is where you have been set.", "neutral", "self")
 						cutscene:look(cutscene:getCharacter("self"), "left")
 						cutscene:text("[font:sans]* what's with that look?[wait:10]\n* every year,[wait:5] it gets reset.", "neutral", "self")
 					elseif v == "berdly" then
+						display.checkmark = "nomark"
 						cutscene:text("[font:sans]* unfortunately,[wait:5] berdly,[wait:5] you weren't so lucky this year.", "neutral", "self")
 						cutscene:text("[font:sans]* however,[wait:5] there's always next year,[wait:5] so no need to fear.", "neutral", "self")
 					elseif v == "pauling" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* pauling,[wait:5] you have been put on the nice list this year...", "neutral", "self")
 						cutscene:text("[font:sans]* but it's been a close margin,[wait:5] you made it by a shear.", "neutral", "self")
 					elseif v == "osw" then
+						display.checkmark = "checkmark"
 						cutscene:text("[font:sans]* starwalker,[wait:5] you've been a good star,[wait:5] it seems.", "neutral", "self")
 						cutscene:text("[font:sans]* maybe unoriginal,[wait:5] but welcome,[wait:5] for your team.", "neutral", "self")
+					elseif v == "len" then
+						display.checkmark = "nomark"
+						cutscene:wait(0.01)
+						display.checkmark = "huhmark"
+						cutscene:text("[face:look_left][wait:2][face:neutral][font:sans]* " .. v .. ",[wait:5] this machine can't place you anywhere-[wait:1]", "neutral", "self", {auto = true})
+						display.checkmark = "checkmark"
+						cutscene:text("[wait:2][font:sans]* oh[wait:5] nevermind, [wait:5]seems like you're on the nice list", "neutral", "self")
 					end
 				end
 			end
-			
+
+			display.powered = false
+			display:updateDisplay()
+
 			cutscene:look(cutscene:getCharacter("self"), "left")
 			
 			-- scanning done
+			local inany = ""
 			if scanned < #Game.party then
 				cutscene:text("[font:sans]* that's all that showed up,[wait:5] but some are not on the list.", "neutral", "self")
 				cutscene:text("[font:sans]* go to the dark place server and mention who i missed.", "neutral", "self")
 				cutscene:text("[font:sans]* tell the devs to add those ones to my scan...", "neutral", "self")
 				cutscene:text("[font:sans]* because i'm sorry,[wait:5] but i've done all i can.", "neutral", "self")
+				inany = "in any case,[wait:5] "
 			end
-			cutscene:text("[font:sans]* in any case,[wait:5] my work for today is done...", "neutral", "self")
+			cutscene:text("[font:sans]* " .. inany .. "my work for today is done...", "neutral", "self")
 			cutscene:text("[font:sans]* maybe i can go home and rest a skele-[color:yellow]ton[color:white].", "neutral", "self")
 			cutscene:hideNametag()
 			cutscene:wait(cutscene:walkToSpeed(cutscene:getCharacter("self"), "self_walk_1", 4))
