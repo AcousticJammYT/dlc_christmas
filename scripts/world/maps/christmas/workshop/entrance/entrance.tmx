@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="28">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="32">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -22,7 +22,7 @@
  <imagelayer id="2" name="Image Layer 1">
   <image source="../../../../../../assets/sprites/world/maps/workshop/workshop_entry.png" width="640" height="480"/>
  </imagelayer>
- <objectgroup id="3" name="collision">
+ <objectgroup color="#0000ff" id="3" name="collision" visible="0">
   <object id="1" x="0" y="0" width="40" height="480"/>
   <object id="2" x="40" y="440" width="80" height="40"/>
   <object id="3" x="200" y="440" width="440" height="40"/>
@@ -35,7 +35,7 @@
   <object id="20" x="320" y="236" width="40" height="96"/>
   <object id="21" x="320" y="160" width="60" height="34"/>
  </objectgroup>
- <objectgroup id="4" name="markers">
+ <objectgroup color="#aa00ff" id="4" name="markers">
   <object id="14" name="entry" x="160" y="580">
    <point/>
   </object>
@@ -64,13 +64,37 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="5" name="objects">
+ <objectgroup color="#ff00ff" id="5" name="objects">
   <object id="10" name="npc" x="380" y="300">
    <properties>
     <property name="actor" value="self"/>
     <property name="facing" value="left"/>
    </properties>
    <point/>
+  </object>
+  <object id="28" name="workshop_display" x="418" y="78" width="60" height="48"/>
+  <object id="29" name="interactable" x="523" y="151.25" width="40" height="6.75">
+   <properties>
+    <property name="cond" value="os.date(&quot;*t&quot;).month == 12"/>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* (Mhh yes)"/>
+    <property name="text2" value="* (I think its december)"/>
+   </properties>
+  </object>
+  <object id="31" name="interactable" x="523.25" y="139.5" width="40" height="12">
+   <properties>
+    <property name="cond" value="os.date(&quot;*t&quot;).month ~= 12"/>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text1" value="* (Mhh nah)"/>
+    <property name="text2" value="* (I don't think its december)"/>
+    <property name="text3" value="* (This thing is outdated...)"/>
+   </properties>
+  </object>
+  <object id="30" name="interactable" x="320" y="240" width="40" height="80">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="text" value="* (None of these buttons do anything)"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

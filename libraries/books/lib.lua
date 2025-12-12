@@ -1,4 +1,4 @@
-booksLib = {}
+_G.booksLib = {}
 local lib = booksLib
 
 function lib:init()
