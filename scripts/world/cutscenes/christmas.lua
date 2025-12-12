@@ -257,9 +257,9 @@ return {
 						display.checkmark = "nomark"
 						cutscene:wait(0.01)
 						display.checkmark = "huhmark"
-						cutscene:text("[face:look_left][wait:2][face:neutral][font:sans]* " .. v .. ",[wait:5] this machine can't place you anywhere-[wait:1]", "neutral", "self", {auto = true})
+						cutscene:text("[face:look_left][wait:2][face:neutral][font:sans]* " .. v .. " ,[wait:5] seems like its loading, give it a second.[wait:1]", "neutral", "self", {auto = true})
 						display.checkmark = "checkmark"
-						cutscene:text("[wait:2][font:sans]* oh[wait:5] nevermind, [wait:5]seems like you're on the nice list", "neutral", "self")
+						cutscene:text("[wait:2][font:sans]* even tho you're darkness,[wait:5] you shine on the record.", "neutral", "self")
 					end
 				end
 			end
