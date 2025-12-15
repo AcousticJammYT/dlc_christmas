@@ -15,7 +15,7 @@
         "border_alpha": 0,
         // Whether to change spells to their jolly variant
         // Type: Boolean
-        "jolly_spell": true,
+        "jolly_spell": false,
         "christmas_hat": {
             // Whether to add Christmas hat to actors.
             // WARNING: HIGHLY EXPERIMENTAL

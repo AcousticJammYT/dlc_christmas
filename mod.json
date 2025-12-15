@@ -1,6 +1,6 @@
 {
     // The ID of your mod. Should be unique!!
-    "id": "a_dark_place_christmas",
+    "id": "dlc_christmas",
     // Displays on the main menu.
     "name": "A Dark Place Christmas",
     // Displays underneath the name. Optional.
@@ -36,9 +36,9 @@
     "setWindowTitleAndIcon": null,
 	
 	"dlc": {
-        "extraBinCodes": {
-            "WORKSHOP": true
-        },
+        // "extraBinCodes": {
+            // "WORKSHOP": true
+        // },
         "worldMap": {},
         "bosses": {}
     },
