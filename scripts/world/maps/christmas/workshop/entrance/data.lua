@@ -1,5 +1,5 @@
 return {
-  version = "1.10",
+  version = "1.11",
   luaversion = "5.1",
   tiledversion = "1.11.2",
   class = "",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 28,
+  nextobjectid = 32,
   properties = {},
   tilesets = {},
   layers = {
@@ -68,7 +68,7 @@ return {
       id = 3,
       name = "collision",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -382,6 +382,72 @@ return {
           properties = {
             ["actor"] = "self",
             ["facing"] = "left"
+          }
+        },
+        {
+          id = 28,
+          name = "workshop_display",
+          type = "",
+          shape = "rectangle",
+          x = 418,
+          y = 78,
+          width = 60,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 523,
+          y = 151.25,
+          width = 40,
+          height = 6.75,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cond"] = "os.date(\"*t\").month == 12",
+            ["solid"] = true,
+            ["text1"] = "* (Mhh yes)",
+            ["text2"] = "* (I think its december)"
+          }
+        },
+        {
+          id = 31,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 523.25,
+          y = 139.5,
+          width = 40,
+          height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cond"] = "os.date(\"*t\").month ~= 12",
+            ["solid"] = true,
+            ["text1"] = "* (Mhh nah)",
+            ["text2"] = "* (I don't think its december)",
+            ["text3"] = "* (This thing is outdated...)"
+          }
+        },
+        {
+          id = 30,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 240,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text"] = "* (None of these buttons do anything)"
           }
         }
       }
