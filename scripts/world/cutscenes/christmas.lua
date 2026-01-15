@@ -2,7 +2,7 @@ return {
 	door = function(cutscene, event)
 		cutscene:text("* The door is frosted shut.")
 		
-		if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
+		if cutscene:getCharacter("jamm") then
 			cutscene:showNametag("Jamm", {right = false})
 			cutscene:text("* If my fire magic weren't on the fritz...", "nervous", "jamm")
 			cutscene:text("* Then maybe this stubborn door I could blitz.", "nervous", "jamm")
@@ -35,7 +35,7 @@ return {
 			cutscene:text("[font:sans]* the name's self,[wait:5] a cheerful skelf,[wait:5] that's me.", "neutral", "self")
 			cutscene:text("[font:sans]* this hotdog stand's my haunt,[wait:5] by santa's workshop,[wait:5] you see.", "neutral", "self")
 			
-			if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
+			if cutscene:getCharacter("jamm") then
 				cutscene:showNametag("Jamm", {right = false})
 				cutscene:text("* Hot dogs,[wait:5] huh?[wait:10]\n* That's what's for lunch?", "nervous", "jamm")
 				cutscene:text("* But this cold's enough to make your b-buns bunch!", "ouch", "jamm")
@@ -77,7 +77,7 @@ return {
 					cutscene:text("[font:sans]* but clear some space,[wait:5] and come back anytime.", "neutral", "self")
 					cutscene:hideShop()
 					if not Game.inventory:isFull("storage", false) then
-						if cutscene:getCharacter("jamm") and not Game:getFlag("dungeonkiller") then
+						if cutscene:getCharacter("jamm") then
 							cutscene:showNametag("Jamm", {right = false})
 							cutscene:text("* But our STORAGE ain't overflowin',[wait:5] that's a fact!", "determined", "jamm")
 							cutscene:text("* Just shove it in there,[wait:5] this whole thing's a whack!", "determined", "jamm")
@@ -189,13 +189,7 @@ return {
 							cutscene:text("[font:sans]* and also,[wait:5] i heard.[wait:10] ania will be missed.", "neutral", "self")
 						else
 							cutscene:text("[font:sans]* jamm,[wait:5] it shows me that you're on the nice list...", "neutral", "self")
-							if Game:getFlag("dungeonkiller") then
-								cutscene:look(cutscene:getCharacter("self"), "left")
-								cutscene:text("[font:sans]* however,[wait:5] i can tell that you're still quite pissed.", "neutral", "self")
-							else
-								cutscene:text("[font:sans]* and also,[wait:5] i heard.[wait:10] ania will be missed.", "neutral", "self")
-							end
-							
+							cutscene:text("[font:sans]* and also,[wait:5] i heard.[wait:10] ania will be missed.", "neutral", "self")
 						end
 					elseif v == "dess" then
 						cutscene:text("[font:sans]* dess,[wait:5] it tells me that you have been naughty...", "neutral", "self")
