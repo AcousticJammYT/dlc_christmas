@@ -1,5 +1,5 @@
 return {
-  version = "1.10",
+  version = "1.11",
   luaversion = "5.1",
   tiledversion = "1.11.2",
   class = "",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 18,
+  nextobjectid = 20,
   properties = {
     ["music"] = "christmas_outside"
   },
@@ -18,14 +18,60 @@ return {
     {
       name = "snowdin",
       firstgid = 1,
-      filename = "../../../../tilesets/snowdin.tsx",
-      exportfilename = "../../../../tilesets/snowdin.lua"
+      class = "",
+      tilewidth = 40,
+      tileheight = 40,
+      spacing = 0,
+      margin = 0,
+      columns = 33,
+      image = "../../../../../../assets/sprites/tilesets/snowdin.png",
+      imagewidth = 1320,
+      imageheight = 1320,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 40,
+        height = 40
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 1089,
+      tiles = {}
     },
     {
       name = "city_alleyway",
       firstgid = 1090,
-      filename = "../../../../tilesets/city_alleyway.tsx",
-      exportfilename = "../../../../tilesets/city_alleyway.lua"
+      class = "",
+      tilewidth = 40,
+      tileheight = 40,
+      spacing = 0,
+      margin = 0,
+      columns = 15,
+      image = "../../../../../../assets/sprites/tilesets/bg_dw_city_alleyway.png",
+      imagewidth = 600,
+      imageheight = 840,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 40,
+        height = 40
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 315,
+      tiles = {}
     }
   },
   layers = {
@@ -279,6 +325,19 @@ return {
           shape = "point",
           x = 1740,
           y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 360,
           width = 0,
           height = 0,
           rotation = 0,

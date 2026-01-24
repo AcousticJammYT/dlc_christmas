@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="18">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="48" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="9" nextobjectid="20">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -56,7 +56,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="collision">
+ <objectgroup color="#0000ff" id="5" name="collision">
   <object id="1" x="0" y="0" width="1680" height="280"/>
   <object id="2" x="80" y="280" width="40" height="40"/>
   <object id="3" x="40" y="320" width="40" height="40"/>
@@ -65,7 +65,7 @@
   <object id="6" x="1880" y="280" width="40" height="200"/>
   <object id="7" x="40" y="440" width="1840" height="40"/>
  </objectgroup>
- <objectgroup id="6" name="markers">
+ <objectgroup color="#aa00ff" id="6" name="markers">
   <object id="8" name="spawn" x="1740" y="340">
    <point/>
   </object>
@@ -75,8 +75,11 @@
   <object id="11" name="out_2" x="1740" y="40">
    <point/>
   </object>
+  <object id="18" name="spawn" x="240" y="360">
+   <point/>
+  </object>
  </objectgroup>
- <objectgroup id="8" name="objects">
+ <objectgroup color="#ff00ff" id="8" name="objects">
   <object id="13" name="transition" x="1640" y="-40" width="200" height="40">
    <properties>
     <property name="map" value="christmas/outside/outside_2"/>
